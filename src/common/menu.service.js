@@ -27,15 +27,19 @@ function MenuService($http, ApiPath) {
 
 
   service.getMenuItems = function (category) {
-    //var config = {};
-    //if (category) {
-      //config.params = {'category': category};
-    //}
 
-    return $http.get(ApiPath + '/menu_items/'+category+'.json').then(function (response) {
-      return response.data;
-    });
-  };
+    var categoryJSON = "";
+
+    categoryJSON = category + ".json";
+
+    return $http
+        .get(ApiPath + "/menu_items/" + categoryJSON)
+        .then(function (response) {
+            return response.data;
+        });
+};
+
+
 
   service.getFavoriteDish = function(short_name) {
     return $http.get(ApiPath + '/menu_items/' + short_name + '.json');
